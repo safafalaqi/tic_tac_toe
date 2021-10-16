@@ -6,10 +6,8 @@ import android.content.SharedPreferences
 import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.ImageButton
-import android.widget.LinearLayout
-import android.widget.RelativeLayout
-import android.widget.TextView
+import android.widget.*
+import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import java.util.*
 import kotlin.collections.ArrayList
@@ -180,9 +178,10 @@ class GameActivity : AppCompatActivity() {
 
         if(c=='x'){
             winSound()
+            findViewById<ImageView>(R.id.imgWinLose).setImageDrawable(ContextCompat.getDrawable(this, R.drawable.youwin))
             findViewById<RelativeLayout>(R.id.llwinlose).isVisible = true
             findViewById<LinearLayout>(R.id.llBoard).isVisible = false
-            findViewById<TextView>(R.id.tvWhoWin).setText("Player 1 Win!")
+            findViewById<TextView>(R.id.tvWhoWin).setText("Player 1 Wins!")
             p1WinCount+=1
             setScore("score",p1WinCount)
             findViewById<TextView>(R.id.p1Score).setText("player2:$p1WinCount")
@@ -199,10 +198,11 @@ class GameActivity : AppCompatActivity() {
 
         }
         else{
-            winSound()
+            lostSound()
+            findViewById<ImageView>(R.id.imgWinLose).setImageDrawable(ContextCompat.getDrawable(this, R.drawable.youlost))
             findViewById<RelativeLayout>(R.id.llwinlose).isVisible = true
             findViewById<LinearLayout>(R.id.llBoard).isVisible = false
-            findViewById<TextView>(R.id.tvWhoWin).setText("Player 2 Win!")
+            findViewById<TextView>(R.id.tvWhoWin).setText("Player 2 Wins!")
             p2WinCount+=1
             findViewById<TextView>(R.id.p2Score).setText("player2:$p2WinCount")
             again.setOnClickListener{

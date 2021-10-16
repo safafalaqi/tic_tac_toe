@@ -25,6 +25,12 @@ class GameActivity : AppCompatActivity() {
     //for setting scores
     private lateinit var sharedPreferences: SharedPreferences
 
+    //for sounds
+    private lateinit var click:MediaPlayer
+    private lateinit var win:MediaPlayer
+    private lateinit var lost:MediaPlayer
+
+
     private lateinit var bt11: ImageButton
     private lateinit var bt12: ImageButton
     private lateinit var bt13: ImageButton
@@ -61,6 +67,12 @@ class GameActivity : AppCompatActivity() {
 
         //get if 2 player or single player
         is2players = intent.getBooleanExtra("type", false)
+
+
+        //initialize sounds
+        click = MediaPlayer.create(this, R.raw.click)
+        win = MediaPlayer.create(this, R.raw.win)
+        lost = MediaPlayer.create(this, R.raw.lose)
 
         bt11 = findViewById(R.id.bt1)
         bt12 = findViewById(R.id.bt2)
@@ -113,7 +125,7 @@ class GameActivity : AppCompatActivity() {
    //this to handle the button when it is being clicked and decide who wins
     private fun setOnClickListener(button: ImageButton){
         button.setOnClickListener{
-            clickSound()
+            click.start()
             if(!isStart){
                 isStart=true
                 button.setBackgroundResource(R.drawable.xbutton)
@@ -177,7 +189,7 @@ class GameActivity : AppCompatActivity() {
         var close= findViewById<ImageButton>(R.id.btClose)
 
         if(c=='x'){
-            winSound()
+            win.start()
             findViewById<ImageView>(R.id.imgWinLose).setImageDrawable(ContextCompat.getDrawable(this, R.drawable.youwin))
             findViewById<RelativeLayout>(R.id.llwinlose).isVisible = true
             findViewById<LinearLayout>(R.id.llBoard).isVisible = false
@@ -198,7 +210,7 @@ class GameActivity : AppCompatActivity() {
 
         }
         else{
-            lostSound()
+            lost.start()
             findViewById<ImageView>(R.id.imgWinLose).setImageDrawable(ContextCompat.getDrawable(this, R.drawable.youlost))
             findViewById<RelativeLayout>(R.id.llwinlose).isVisible = true
             findViewById<LinearLayout>(R.id.llBoard).isVisible = false
@@ -317,30 +329,12 @@ class GameActivity : AppCompatActivity() {
             arrayListOf('d','e','f'),
             arrayListOf('j','h','i')
         )
-        is2players=false
         isStart=false
         isMute=false
         playerOne=false
         playerTwo=false
 
-    }
 
-    //for click sound
-    private fun clickSound() {
-        val mediaPlayer = MediaPlayer.create(this, R.raw.click)
-        mediaPlayer.start()
-    }
-
-    //for win sound
-    private fun winSound() {
-        val mediaPlayer = MediaPlayer.create(this, R.raw.win)
-        mediaPlayer.start()
-    }
-
-    //for lost sound
-    private fun lostSound() {
-        val mediaPlayer = MediaPlayer.create(this, R.raw.lose)
-        mediaPlayer.start()
     }
 
     //for the music manager

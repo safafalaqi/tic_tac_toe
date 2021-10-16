@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@drawable/bgmain"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+
+    <LinearLayout
+        android:layout_width="325dp"
+        android:layout_height="558dp"
+        android:layout_centerInParent="true"
+        android:gravity="top"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/title"
+            android:layout_width="274dp"
+            android:layout_height="142dp"
+            android:layout_gravity="center"
+            app:srcCompat="@drawable/title" />
+
+        <ImageButton
+            android:id="@+id/btSingle"
+            android:layout_width="180dp"
+            android:layout_height="120dp"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/singleplayer" />
+
+        <ImageButton
+            android:id="@+id/bt2player"
+            android:layout_width="180dp"
+            android:layout_height="120dp"
+            android:layout_gravity="center"
+            android:layout_margin="20dp"
+            android:background="@drawable/twoplayers" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:gravity="right"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/btSound"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/music" />
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/tvTotalScore"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:layout_margin="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/score"
+        android:text="Scores: 0 "
+        android:textAlignment="textEnd"
+        android:textColor="@color/white" />
+</RelativeLayout>

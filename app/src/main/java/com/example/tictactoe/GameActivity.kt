@@ -255,7 +255,11 @@ class GameActivity : AppCompatActivity() {
     fun botClicked() {
         var found = false
         var bt: ImageButton? = null
-        for (i in buttonArray){
+        val shuffeldArray= buttonArray
+        //to choose randomly
+        shuffeldArray.shuffle()
+
+        for (i in shuffeldArray){
             if (i.isEnabled) {
                 bt=i
                 found=true

@@ -6,6 +6,7 @@ import android.content.SharedPreferences
 import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.widget.*
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
@@ -53,7 +54,7 @@ class GameActivity : AppCompatActivity() {
         arrayListOf('a','b','c'),
         arrayListOf('d','e','f'),
         arrayListOf('j','h','i')
-    ) //z for computer x for player 1 o for player 2
+    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -136,8 +137,11 @@ class GameActivity : AppCompatActivity() {
                 if(is2players)
                 playerTwo=true
                 else{
-                    tvWho.text="Bot"
-                    botClicked()
+                    Handler().postDelayed({
+                        tvWho.text="Bot"
+                        botClicked()
+                    },1000)
+
                     playerOne=true
                 }
 
@@ -157,9 +161,11 @@ class GameActivity : AppCompatActivity() {
                     isEnd()
                 }else
                 {
+                    Handler().postDelayed({
+                        tvWho.text="Bot"
+                        botClicked()
+                    },1000)
 
-                    tvWho.text="Bot"
-                    botClicked()
                     playerOne=true
                     isEnd()
                 }
@@ -278,6 +284,7 @@ class GameActivity : AppCompatActivity() {
             }
         }
         if(found){
+
             bt!!.setBackgroundResource(R.drawable.obutton)
             bt.isEnabled=false
             buttonClicked(bt,'o')
